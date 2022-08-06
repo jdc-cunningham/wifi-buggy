@@ -19,6 +19,17 @@ body * {
   margin-bottom: 2rem;
 }
 
+#messages {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 25vh;
+  width: 100vw;
+  overflow-y: auto;
+  border-top: 1px solid black;
+  padding: 0.5rem;
+}
+
 .dpad {
   display: flex;
   align-items: center;

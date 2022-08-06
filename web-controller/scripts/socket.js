@@ -2,8 +2,20 @@
 let meshTelUploading = false;
 let socketInterval = null;
 let socket = null;
+let msgAppendCounter = 0;
 
 const socketStatus = document.getElementById('socket-status');
+const messages = document.getElementById('messages');
+
+const appendMessage = (from, msg) => {
+  messages.innerText = `from: ${from}, msg ${msg} \n` + messages.innerText;
+  msgAppendCounter += 1;
+
+  if (msgAppendCounter === 10) {
+    msgAppendCounter = 0;
+    messages.innerText = '';
+  }
+}
 
 const connectToRobot = () => {
   socket = new WebSocket('ws://192.168.1.195:80'); // esp01 on robot
@@ -16,13 +28,14 @@ const connectToRobot = () => {
     // keep connection to esp01 alive
     socketInterval = setInterval(() => {
       socket.send('poll');
+      appendMessage('ui', 'poll');
     }, 1000);
   });
  
 // listen for messages from robot
   socket.addEventListener('message', function (event) {
     const robotMsg = event.data;
-    console.log(robotMsg);
+    appendMessage('robot', robotMsg);
   });
  
   socket.addEventListener('close', function (event) {

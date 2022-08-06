@@ -1,7 +1,7 @@
 const dpadForward = document.getElementById('forward');
 const dpadLeft = document.getElementById('left');
 const dpadRight = document.getElementById('right');
-const dpadBackward = document.getElementById('back');
+const dpadBackward = document.getElementById('backward');
 
 const dpadBtns = [dpadForward, dpadLeft, dpadRight, dpadBackward];
 const commLookup = {
@@ -19,4 +19,5 @@ dpadBtns.forEach(dpadBtn => dpadBtn.addEventListener('click', (e) => {
 
   activeDirection = whichDir;
   socket.send(commLookup[activeDirection]);
+  appendMessage('ui', commLookup[activeDirection]);
 }));
