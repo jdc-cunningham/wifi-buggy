@@ -18,3 +18,7 @@ So... I just realized I don't have a programming board for the ESP-07
 
 So I'll switch to a Seeeduino (small arduino) and ESP-01 approach
 
+12:54 PM
+
+OMG... finally got past the bad wiring on the ESP-01 that's why it wasn't working.
+
