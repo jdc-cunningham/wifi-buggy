@@ -28,3 +28,7 @@ Alright I'm done building now thankfully
 
 I have to make the basic controller and later calibrate the motions so they go straight.
 
+4:20 PM (aye yo)
+
+Had a lot of problems with wiring... I ended up separating the signal wires that were together on the dev board. Now it's solid.
+
