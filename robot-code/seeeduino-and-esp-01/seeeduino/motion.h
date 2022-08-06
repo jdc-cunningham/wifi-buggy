@@ -9,7 +9,7 @@ Servo servoRight;
 
 // wtf are these variables, my own code from almost 3 years ago
 int seLeFoPos = 85;
-int seRiFoPos = 98; // these determine the speed, higher value from midpoint eg. 90 the faster it rotates
+int seRiFoPos = 97; // these determine the speed, higher value from midpoint eg. 90 the faster it rotates
 int seLeBaPos = 95;
 int seRiBaPos = 84;
 int seLeStPos = 90;
@@ -20,38 +20,67 @@ bool isMovingBackwards = false;
 bool isTurningLeft = false;
 bool isTurningRight = false;
 
+bool loggingEnabled = true;
+String activeDirection = "";
+
+int motionIncrementer = 0; // cap this
+int maxMotionVal = 2;
+
+int motionDelay = 250;
+
 void setupServos()
 {
   servoLeft.attach(0);
-  servoRight.attach(2);
+  servoRight.attach(3);
 }
 
 // motions
 void moveForward() {
   servoLeft.write(seLeFoPos);
   servoRight.write(seRiFoPos);
-  Serial.print("Forward");
-  Serial.println();
+
+  if (loggingEnabled)
+  {
+    Serial.print("Forward");
+    Serial.println();
+  }
 }
 
-void moveLeft() {
+void turnLeft() {
   servoLeft.write(seLeBaPos);
   servoRight.write(seRiFoPos);
-  Serial.print("Left");
-  Serial.println();
+
+  if (loggingEnabled)
+  {
+    Serial.print("Left");
+    Serial.println();
+  }
 }
 
-void moveRight() {
+void turnRight() {
   servoLeft.write(seLeFoPos);
   servoRight.write(seRiBaPos);
-  Serial.print("Right");
-  Serial.println();
+
+  if (loggingEnabled)
+  {
+    Serial.print("Right");
+    Serial.println();
+  }
 }
 
 void moveBackward() {
   servoLeft.write(seLeBaPos);
   servoRight.write(seRiBaPos);
-  Serial.print("Backward");
-  Serial.println();
+
+  if (loggingEnabled)
+  {
+    Serial.print("Backward");
+    Serial.println();
+  }
 }
 
+void stopMoving()
+{
+  servoLeft.write(seLeStPos);
+  servoRight.write(seRiStPos);
+}

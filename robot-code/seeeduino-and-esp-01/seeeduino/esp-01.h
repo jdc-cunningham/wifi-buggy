@@ -54,13 +54,35 @@ void checkMessages()
   {
     Serial.println(espMsg);
 
-    if (espMsg == "mf")
+    if (espMsg.indexOf("m_f") > -1) // index of due to char chunking
     {
-      moveForward();
+      activeDirection = "forward";
+    }
+
+    if (espMsg.indexOf("m_l") > -1) // index of due to char chunking
+    {
+      activeDirection = "left";
+    }
+
+    if (espMsg.indexOf("m_r") > -1) // index of due to char chunking
+    {
+      activeDirection = "right";
+    }
+
+    if (espMsg.indexOf("m_b") > -1) // index of due to char chunking
+    {
+      activeDirection = "back";
+    }
+
+    if (espMsg.indexOf("m_s") > -1) // move stop?
+    {
+      activeDirection = "";
     }
 
     clearEspSerial();
   }
+
+  // Serial.println("check");
 
   delay(250); // delay for sync
 }
