@@ -1,12 +1,16 @@
 // this file relies on statuses.js to exist before itself
 let meshTelUploading = false;
 let socketInterval = null;
+let socket = null;
+
+const socketStatus = document.getElementById('socket-status');
 
 const connectToRobot = () => {
-  const socket = new WebSocket('ws://192.168.1.195:80'); // esp01 on robot
+  socket = new WebSocket('ws://192.168.1.195:80'); // esp01 on robot
 
   // connection opened, send messages to robot
   socket.addEventListener('open', function (event) {
+    socketStatus.innerText = 'connected';
     socket.send('Hello robot!');
  
     // keep connection to esp01 alive
@@ -22,6 +26,7 @@ const connectToRobot = () => {
   });
  
   socket.addEventListener('close', function (event) {
+    socketStatus.innerText = 'connection lost';
     clearInterval(socketInterval);
     if (!meshTelUploading) connectToRobot();
  });
