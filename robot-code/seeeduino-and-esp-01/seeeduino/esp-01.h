@@ -53,6 +53,12 @@ void checkMessages()
   if (espMsg)
   {
     Serial.println(espMsg);
+
+    if (espMsg == "mf")
+    {
+      moveForward();
+    }
+
     clearEspSerial();
   }
 

@@ -9,11 +9,22 @@ Servo servoRight;
 
 // wtf are these variables, my own code from almost 3 years ago
 int seLeFoPos = 85;
-int seRiFoPos = 96;
+int seRiFoPos = 98; // these determine the speed, higher value from midpoint eg. 90 the faster it rotates
 int seLeBaPos = 95;
 int seRiBaPos = 84;
 int seLeStPos = 90;
 int seRiStPos = 90;
+
+bool isMovingForward = false;
+bool isMovingBackwards = false;
+bool isTurningLeft = false;
+bool isTurningRight = false;
+
+void setupServos()
+{
+  servoLeft.attach(0);
+  servoRight.attach(2);
+}
 
 // motions
 void moveForward() {

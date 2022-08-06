@@ -22,3 +22,9 @@ So I'll switch to a Seeeduino (small arduino) and ESP-01 approach
 
 OMG... finally got past the bad wiring on the ESP-01 that's why it wasn't working.
 
+1:49 PM
+
+Alright I'm done building now thankfully
+
+I have to make the basic controller and later calibrate the motions so they go straight.
+
